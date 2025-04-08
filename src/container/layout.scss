@@ -1,0 +1,36 @@
+.customer-sider {}
+
+
+.headerFlexRow {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    &-rightBox {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        margin-right: 12px;
+
+        &-class {
+
+        }
+
+        &-btn {
+            margin-left: 12px;
+        }
+    }
+}
+
+.customer-sider-vertical {
+    height: 32px;
+    margin: 16px;
+    background: rgba(255, 255, 255, .2);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 14px;
+}
