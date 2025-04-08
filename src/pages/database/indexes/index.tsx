@@ -4,7 +4,7 @@
 import { useEffect, useState } from "react";
 import type { TableColumnType } from "antd";
 import { Table, Space, Select, Form, Card, Row, Col, Button, message } from "antd";
-import { getCorpList, getChannelDataBoardCount } from "../../../apis/index";
+// import { getCorpList, getChannelDataBoardCount } from "../../../apis/index";
 import { getChannelId } from "../../../utils/getChannelId";
 import { removeEmptyValues } from "../../../utils/removeEmptyObj";
 import { getTableScroll } from "../../../utils/getTableScroll";
@@ -47,50 +47,50 @@ export const Database = () => {
       const temp = JSON.parse(storagelist);
       setCorplist(temp);
     } else {
-      const result = (await getCorpList("1")) as {
-        code: string;
-        data: CorpState[];
-      };
-      if (result.code == "10000") {
-        if (result.data && result.data.length != 0) {
-          setCorplist(result.data);
-        } else {
-          setCorplist([]);
-        }
-      }
+      // const result = (await getCorpList("1")) as {
+      //   code: string;
+      //   data: CorpState[];
+      // };
+      // if (result.code == "10000") {
+      //   if (result.data && result.data.length != 0) {
+      //     setCorplist(result.data);
+      //   } else {
+      //     setCorplist([]);
+      //   }
+      // }
     }
   };
 
   const queryChannelDataBoardCount = async (data: any) => {
     setLoading(true);
-    const result = (await getChannelDataBoardCount(data)) as {
-      code: string;
-      data: any;
-      message: string
-    };
-    if (result.code === "10000") {
-      setLoading(false);
-      if (result.data) {
-        setTotal(result.data.total);
-      }
-      if (
-        result.data &&
-        result.data.records &&
-        result.data.records.length != 0
-      ) {
-        setDataSource(result.data.records);
-      } else {
-        setDataSource([]);
-      }
-      console.log("queryChannelDataBoardCount", result.data);
-    } else {
-      messageApi.open({
-        type: 'error',
-        content: `${result.message}`
-      })
-      setDataSource([]);
-      setLoading(false);
-    }
+    // const result = (await getChannelDataBoardCount(data)) as {
+    //   code: string;
+    //   data: any;
+    //   message: string
+    // };
+    // if (result.code === "10000") {
+    //   setLoading(false);
+    //   if (result.data) {
+    //     setTotal(result.data.total);
+    //   }
+    //   if (
+    //     result.data &&
+    //     result.data.records &&
+    //     result.data.records.length != 0
+    //   ) {
+    //     setDataSource(result.data.records);
+    //   } else {
+    //     setDataSource([]);
+    //   }
+    //   console.log("queryChannelDataBoardCount", result.data);
+    // } else {
+    //   messageApi.open({
+    //     type: 'error',
+    //     content: `${result.message}`
+    //   })
+    //   setDataSource([]);
+    //   setLoading(false);
+    // }
   };
 
   const columns: TableColumnType<DatabaseDetailCloumns>[] = [

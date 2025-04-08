@@ -22,11 +22,11 @@ export const InputLogin = () => {
   const onFinish = async (value: any) => {
    
     const result = (await postLogin(value)) as {
-      code: string;
+      statusCode: number;
       data: any;
       message: string;
     };
-    if (result.code === "10000") {
+    if (result.statusCode === 200) {
       Utils.setStorage("auth", JSON.stringify(result.data));
       window.location.replace('/database/index')
       setLoginState(true);
@@ -49,9 +49,9 @@ export const InputLogin = () => {
       >
         <LoginFormPage
           backgroundImageUrl="https://mdn.alipayobjects.com/huamei_gcee1x/afts/img/A*y0ZTS6WLwvgAAAAAAAAAAAAADml6AQ/fmt.webp"
-          logo="https://ldl-individual.oss-cn-hangzhou.aliyuncs.com/assOfficial/svg.png"
+          // logo="https://ldl-individual.oss-cn-hangzhou.aliyuncs.com/assOfficial/svg.png"
           backgroundVideoUrl="https://gw.alipayobjects.com/v/huamei_gcee1x/afts/video/jXRBRK_VAwoAAAAAAAAAAAAAK4eUAQBr"
-          title="AI体育合作伙伴数据看板"
+          title="数据统计工具"
           containerStyle={{
             backgroundColor: "rgba(255, 255, 255,1)",
             backdropFilter: "blur(4px)",
@@ -104,7 +104,7 @@ export const InputLogin = () => {
           {loginType === "account" && (
             <>
               <ProFormText
-                name="userName"
+                name="username"
                 fieldProps={{
                   size: "large",
                   prefix: (
@@ -116,7 +116,7 @@ export const InputLogin = () => {
                     />
                   ),
                 }}
-                placeholder='请输入用户名'
+                placeholder='请输入用户名：root'
                 rules={[
                   {
                     required: true,
@@ -137,7 +137,7 @@ export const InputLogin = () => {
                     />
                   ),
                 }}
-                placeholder='请输入密码'
+                placeholder='请输入密码：123456'
                 rules={[
                   {
                     required: true,

@@ -5,14 +5,14 @@
  * @Author: gaowei1012 gyb2020018@163.com
  * @Date: 2025-04-02 15:21:02
  * @LastEditors: gaowei1012 gyb2020018@163.com
- * @LastEditTime: 2025-04-03 17:06:43
+ * @LastEditTime: 2025-04-08 13:50:09
  * @FilePath: /management-terminal/src/pages/income/indexes/index.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 import { useState, useEffect } from "react";
 import type { TableColumnType } from "antd";
 import { Space, Table, Select, Form, Row, Col, Button, Card, message } from "antd";
-import { getCorpList, getChannelOrderCount } from "../../../apis/index";
+// import { getCorpList, getChannelOrderCount } from "../../../apis/index";
 import { removeEmptyValues } from '../../../utils/removeEmptyObj'
 import { getChannelId } from "../../../utils/getChannelId";
 import { getTableScroll } from "../../../utils/getTableScroll";
@@ -60,50 +60,50 @@ export const IncomeIndex = () => {
       const temp = JSON.parse(storagelist);
       setCorplist(temp);
     } else {
-      const result = (await getCorpList(getChannelId())) as {
-        code: string;
-        data: CorpState[];
-      };
-      if (result.code == "10000") {
-        if (result.data && result.data.length != 0) {
-          setCorplist(result.data);
-        } else {
-          setCorplist([]);
-        }
-      }
+      // const result = (await getCorpList(getChannelId())) as {
+      //   code: string;
+      //   data: CorpState[];
+      // };
+      // if (result.code == "10000") {
+      //   if (result.data && result.data.length != 0) {
+      //     setCorplist(result.data);
+      //   } else {
+      //     setCorplist([]);
+      //   }
+      // }
     }
   };
 
   // 列表
   const queryChannelOrderCount = async (data: any) => {
     setLoading(true);
-    const result = (await getChannelOrderCount(data)) as {
-      code: string;
-      data: any;
-      message: string
-    };
-    if (result.code == "10000") {
-      setLoading(false);
-      if (result.data) {
-        setTotal(result.data.total);
-      }
-      if (
-        result.data &&
-        result.data.records &&
-        result.data.records.length != 0
-      ) {
-        setDataSource(result.data.records);
-      } else {
-        setDataSource([]);
-      }
-    } else {
-      messageApi.open({
-        type: 'error',
-        content: `${result.message}`
-      })
-      setDataSource([])
-      setLoading(false);
-    }
+    // const result = (await getChannelOrderCount(data)) as {
+    //   code: string;
+    //   data: any;
+    //   message: string
+    // };
+    // if (result.code == "10000") {
+    //   setLoading(false);
+    //   if (result.data) {
+    //     setTotal(result.data.total);
+    //   }
+    //   if (
+    //     result.data &&
+    //     result.data.records &&
+    //     result.data.records.length != 0
+    //   ) {
+    //     setDataSource(result.data.records);
+    //   } else {
+    //     setDataSource([]);
+    //   }
+    // } else {
+    //   messageApi.open({
+    //     type: 'error',
+    //     content: `${result.message}`
+    //   })
+    //   setDataSource([])
+    //   setLoading(false);
+    // }
   };
 
   const columns: TableColumnType<DatabaseDetailCloumns>[] = [

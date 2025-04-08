@@ -4,14 +4,14 @@
  * @Author: gaowei1012 gyb2020018@163.com
  * @Date: 2025-04-02 11:08:56
  * @LastEditors: gaowei1012 gyb2020018@163.com
- * @LastEditTime: 2025-04-03 17:05:45
+ * @LastEditTime: 2025-04-08 13:49:18
  * @FilePath: /data-management-terminal/src/pages/database/detail/index.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 import { useState, useEffect } from "react";
 import type { TableColumnType } from "antd";
 import { Table, Card, Space, Row, Col, DatePicker, Form, Button, message } from "antd";
-import { getChannelDataBoard } from "../../../apis/index";
+// import { getChannelDataBoard } from "../../../apis/index";
 import { getChannelId } from "../../../utils/getChannelId";
 import { removeEmptyValues } from "../../../utils/removeEmptyObj";
 import { getTableScroll } from "../../../utils/getTableScroll";
@@ -57,33 +57,33 @@ export const DatabaseDetail = () => {
 
   const queryChannelDataBoard = async (data: any) => {
     setLoading(true);
-    const result = (await getChannelDataBoard(data)) as {
-      code: string;
-      data: any;
-      message: string
-    };
-    if (result.code == "10000") {
-      setLoading(false);
-      if (result.data) {
-        setTotal(result.data.total);
-      }
-      if (
-        result.data &&
-        result.data.records &&
-        result.data.records.length != 0
-      ) {
-        setDataSource(result.data.records);
-      } else {
-        setDataSource([]);
-      }
-    } else {
-      messageApi.open({
-        type: 'error',
-        content: `${result.message}`
-      })
-      setLoading(false);
-      setDataSource([]);
-    }
+    // const result = (await getChannelDataBoard(data)) as {
+    //   code: string;
+    //   data: any;
+    //   message: string
+    // };
+    // if (result.code == "10000") {
+    //   setLoading(false);
+    //   if (result.data) {
+    //     setTotal(result.data.total);
+    //   }
+    //   if (
+    //     result.data &&
+    //     result.data.records &&
+    //     result.data.records.length != 0
+    //   ) {
+    //     setDataSource(result.data.records);
+    //   } else {
+    //     setDataSource([]);
+    //   }
+    // } else {
+    //   messageApi.open({
+    //     type: 'error',
+    //     content: `${result.message}`
+    //   })
+    //   setLoading(false);
+    //   setDataSource([]);
+    // }
   };
 
   const onReset = () => {

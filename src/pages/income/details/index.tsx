@@ -16,7 +16,7 @@ import {
   Tag,
   message
 } from "antd";
-import { getCorpList, getChannelOrder } from "../../../apis/index";
+// import { getCorpList, getChannelOrder } from "../../../apis/index";
 import { removeEmptyValues } from "../../../utils/removeEmptyObj";
 import { getChannelId } from "../../../utils/getChannelId";
 import Utils from "../../../utils/index";
@@ -71,47 +71,47 @@ export const IncomeDetails = () => {
       const temp = JSON.parse(storagelist);
       setCorplist(temp);
     } else {
-      const result = (await getCorpList("1")) as {
-        code: string;
-        data: CorpState[];
-      };
-      if (result.code == "10000") {
-        if (result.data && result.data.length != 0) {
-          Utils.setStorage("corplist", JSON.stringify(result.data));
-          setCorplist(result.data);
-        } else {
-          setCorplist([]);
-        }
-      }
+      // const result = (await getCorpList("1")) as {
+      //   code: string;
+      //   data: CorpState[];
+      // };
+      // if (result.code == "10000") {
+      //   if (result.data && result.data.length != 0) {
+      //     Utils.setStorage("corplist", JSON.stringify(result.data));
+      //     setCorplist(result.data);
+      //   } else {
+      //     setCorplist([]);
+      //   }
+      // }
     }
   };
 
   const queryChannelOrder = async (data: any) => {
     setLoading(true);
-    const result = (await getChannelOrder(data)) as { code: string; data: any, message: string };
-    if (result.code == "10000") {
-      if (result.data) {
-        setTotal(result.data.total);
-      }
-      if (
-        result.data &&
-        result.data.records &&
-        result.data.records.length != 0
-      ) {
-        setLoading(false);
-        setDataSource(result.data.records);
-      } else {
-        setLoading(false);
-        setDataSource([]);
-      }
-    } else {
-      messageApi.open({
-        type: 'error',
-        content: `${result.message}`
-      })
-      setDataSource([]);
-      setLoading(false);
-    }
+    // const result = (await getChannelOrder(data)) as { code: string; data: any, message: string };
+    // if (result.code == "10000") {
+    //   if (result.data) {
+    //     setTotal(result.data.total);
+    //   }
+    //   if (
+    //     result.data &&
+    //     result.data.records &&
+    //     result.data.records.length != 0
+    //   ) {
+    //     setLoading(false);
+    //     setDataSource(result.data.records);
+    //   } else {
+    //     setLoading(false);
+    //     setDataSource([]);
+    //   }
+    // } else {
+    //   messageApi.open({
+    //     type: 'error',
+    //     content: `${result.message}`
+    //   })
+    //   setDataSource([]);
+    //   setLoading(false);
+    // }
   };
 
   const columns: TableColumnType<DatabaseDetailCloumns>[] = [
